@@ -20,6 +20,7 @@ import shop.mtcoding.hiberpc.model.user.User;
 
 @DataJpaTest // 이녀석은 JpaRepository 를 구현한 인터페이스만 힙에 띄워준다.
 @Import(MyRepository.class) // 따라서 EntityManager를 의존한 레파지토리는 임포트를 해줘야 한다.
+@Transactional
 public class BoardRepositoryTest extends MyDummyEntity{
     
     @Autowired 
@@ -36,7 +37,6 @@ public class BoardRepositoryTest extends MyDummyEntity{
 
 
     @Test
-    @Transactional
     public void save_test() throws Exception {
         // given
         User user = newUser("ssar");
@@ -55,7 +55,6 @@ public class BoardRepositoryTest extends MyDummyEntity{
     }
 
     @Test
-    @Transactional
     public void update_test() throws Exception {
         // given1 - DB에 영속화
         User user = newUser("ssar");
@@ -77,7 +76,6 @@ public class BoardRepositoryTest extends MyDummyEntity{
     }
 
     @Test
-    @Transactional
     public void delete_test() throws Exception {
         // given1 - DB에 영속화
         User user = newUser("ssar");
@@ -102,7 +100,6 @@ public class BoardRepositoryTest extends MyDummyEntity{
     }
 
     @Test
-    @Transactional
     public void findById_test() throws Exception {
         // given
         User user = newUser("ssar");
@@ -121,7 +118,6 @@ public class BoardRepositoryTest extends MyDummyEntity{
     }
 
     @Test
-    @Transactional
     public void findAll_test() throws Exception {
         // given
         User user = newUser("ssar");
@@ -135,6 +131,5 @@ public class BoardRepositoryTest extends MyDummyEntity{
     
         // then
         assertThat(userListPS.size()).isEqualTo(2);
-    
     }
 }

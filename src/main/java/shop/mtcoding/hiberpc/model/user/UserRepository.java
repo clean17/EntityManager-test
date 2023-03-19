@@ -3,6 +3,7 @@ package shop.mtcoding.hiberpc.model.user;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
@@ -20,6 +21,8 @@ public class UserRepository {
     public List<User> findAll(int id){
         return em.createQuery("select * from User u", User.class).getResultList();
     }
+
+    @Transactional
     public User save(User user){
         // if(ObjectUtils.isEmpty(user.getId())){
         //     em.persist(user);
@@ -40,6 +43,8 @@ public class UserRepository {
         em.merge(user);
         return user;
     }
+    
+    @Transactional
     public void delete(User user){ // 삭제할때도 오브젝트를 넣어서 찾는다 !!
         em.remove(user);
     }

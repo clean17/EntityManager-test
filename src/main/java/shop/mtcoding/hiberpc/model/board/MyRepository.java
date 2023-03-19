@@ -3,6 +3,7 @@ package shop.mtcoding.hiberpc.model.board;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +22,7 @@ public class MyRepository<T, D> {
         return em.createQuery("select u from "+clazz.getSimpleName()+" u", clazz).getResultList();
     }
 
+    @Transactional
     public T save(T entity){
         // if(ObjectUtils.isEmpty(entity.getId())){
         //     em.persist(entity);
@@ -40,6 +42,8 @@ public class MyRepository<T, D> {
         em.merge(entity);
         return entity;
     }
+    
+    @Transactional
     public void delete(T entity){ // 삭제할때도 오브젝트를 넣어서 찾는다 !!
         em.remove(entity);
     }
