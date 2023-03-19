@@ -15,14 +15,14 @@ public class MyDummyEntity {
                 .build();
     }
 
-    protected User newMockUser(String username){
-        return User.builder()
-                .id(1L)
-                .username(username)
-                .password("1234")
-                .email("ssar@nate.com")
-                .build();
-    }
+    // protected User newMockUser(String username){
+    //     return User.builder()
+    //             .id(1L)
+    //             .username(username)
+    //             .password("1234")
+    //             .email("ssar@nate.com")
+    //             .build();
+    // }
 
     protected Board newBoard(String title, User userPS){
         if(userPS.getId() == null){
